@@ -2,5 +2,5 @@
 __py_cache__
 *.pyc
 *.swp
-assets/fonts/
-data/
+assets/fonts/*
+data/*
