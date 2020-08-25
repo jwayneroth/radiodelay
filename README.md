@@ -8,7 +8,7 @@ Python program using PyAudio to add variable delay to audio input. Intended for 
 - interactive: 0 or 1 to accept command line input for setting delay. 
 
 <img src="assets/images/build.jpg" width="600" height="545" />
-<p>working prototype with a pi zero and <a href="https://www.adafruit.com/product/661">oled display</a>. Uses <a href="https://www.adafruit.com/product/1475">this</a> usb sound card.</p>
+<p>working prototype with a pi zero and <a href="https://www.adafruit.com/product/661">oled display</a>. Uses <a href="https://www.adafruit.com/product/1475">this</a> usb sound card. The panel mount switch is used for <a href="https://github.com/adafruit/Adafruit-GPIO-Halt">shutdown</a></p>
 
 ## License
 
