@@ -197,10 +197,6 @@ class RadioDelay(object):
 		display.image(canvas)
 		display.show()
 	
-	def init_buttons_loop(self):
-		while True:
-			self.buttons_loop()
-	
 	"""
 	iteration of loop to check buttons
 	"""
@@ -249,10 +245,6 @@ class RadioDelay(object):
 		
 		if (self.buffer_index >= self.buffer_chunks):
 			self.buffer_index = 0
-	
-	def init_input_loop(self):
-		while True:
-			self.input_loop()
 	
 	"""
 	handle keyboard input after enter
@@ -306,18 +298,22 @@ if __name__ == '__main__':
 	streams_thread = threading.Thread(target=rd.init_streams_loop, args=(), daemon=True)
 	streams_thread.start() 
 	
+	loop_methods = []
+	
 	if args.interactive:
 		input_queue = queue.Queue()
 		input_thread = threading.Thread(target=read_kbd_input, args=(input_queue,), daemon=True)
 		input_thread.start()
 		
-		rd.init_input_loop()
-		
+		loop_methods.append(rd.input_loop)
+	
 	if args.ssd:
 		rd.init_ssd()
-		rd.init_buttons_loop()
+		
+		loop_methods.append(rd.buttons_loop)
 	
 	while True:
-		pass
+		for method in loop_methods:
+			method()
 	
 	rd.kill()
